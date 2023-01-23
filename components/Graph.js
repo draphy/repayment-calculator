@@ -75,7 +75,7 @@ function Graph() {
   function calculate(e) {
     e.preventDefault();
     let monthPay = document.getElementById("monthPay").value;
-    if (balance / monthPay > 200 && monthPay==0) {
+    if (balance / monthPay > 200 || monthPay==0) {
       toast.error("Loan is not available, please increase your payment", {
         position: "top-center",
       });
