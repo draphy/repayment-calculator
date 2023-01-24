@@ -12,8 +12,8 @@ const reduserFun = (state = initialState, action) => {
       };
     case DELETE_BALANCE:
       return {
-        balance : action.payload.balance,
-        history : [...action.payload.history]
+        balance: action.payload.balance,
+        history: [...action.payload.history],
       };
     default:
       return state;

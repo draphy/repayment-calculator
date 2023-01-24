@@ -1,5 +1,5 @@
 import { ADD_BALANCE } from "./loanTypes";
-import {DELETE_BALANCE} from "./loanTypes"
+import { DELETE_BALANCE } from "./loanTypes";
 
 export const addBalance = (isSubmit) => {
   return {
@@ -8,9 +8,9 @@ export const addBalance = (isSubmit) => {
   };
 };
 
-export const deleteBalance = (newHistory , newBalance) => {
+export const deleteBalance = (newHistory, newBalance) => {
   return {
     type: DELETE_BALANCE,
-    payload:{balance : newBalance , history : newHistory},
+    payload: { balance: newBalance, history: newHistory },
   };
 };

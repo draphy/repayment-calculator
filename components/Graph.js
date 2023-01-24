@@ -28,6 +28,7 @@ ChartJS.register(
 function Graph() {
   const { balance, history } = useSelector((state) => state);
   const [emivalue, setEmivalue] = useState(null);
+  const [timerId, setTimerId] = useState(null);
   const options = {
     responsive: true,
     plugins: {
@@ -72,10 +73,9 @@ function Graph() {
       },
     ],
   };
-  function calculate(e) {
-    e.preventDefault();
+  function calculate() {
     let monthPay = document.getElementById("monthPay").value;
-    if (balance / monthPay > 200 || monthPay==0) {
+    if (balance / monthPay > 200 || monthPay == 0) {
       toast.error("Loan is not available, please increase your payment", {
         position: "top-center",
       });
@@ -83,6 +83,19 @@ function Graph() {
       setEmivalue(monthPay);
     }
   }
+
+  // Declare debounce function
+  function debounce(fn, delay) {
+    let timeout;
+    return function () {
+      clearTimeout(timeout);
+      timeout = setTimeout(fn, delay);
+      setTimerId(timeout);
+    };
+  }
+
+  // Use debounce function
+  const myFunction = debounce(calculate, 1000);
 
   return (
     <div>
@@ -101,7 +114,7 @@ function Graph() {
               type="number"
               id="monthPay"
               placeholder="type your monthly payment"
-              onChange={calculate}
+              onChange={myFunction}
               style={{ width: "100%" }}
             />
           </div>

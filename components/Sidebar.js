@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { addBalance , deleteBalance} from "@/redux";
+import { addBalance, deleteBalance } from "@/redux";
 
-import {MdDelete} from "react-icons/md"
+import { MdDelete } from "react-icons/md";
 
 function Sidebar() {
   const { balance, history } = useSelector((state) => state);
@@ -27,14 +27,11 @@ function Sidebar() {
     }
   };
 
-
   const deleteIcon = (index) => {
-
-    let newHistory = history.filter((elem, i)=> i!=index)
-    let newBalance = balance-history[index]
-    dispatch(deleteBalance(newHistory,newBalance))
-
-  }
+    let newHistory = history.filter((elem, i) => i != index);
+    let newBalance = balance - history[index];
+    dispatch(deleteBalance(newHistory, newBalance));
+  };
   return (
     <div className="main">
       <h1>Account</h1>
@@ -62,8 +59,25 @@ function Sidebar() {
       <p>Balance History</p>
       {history.map((v, i) => {
         return (
-          <div key={i} className="second" style={{"display" : "flex" , "alignItems":"center", "justifyContent" : "center" , "gap" : "1rem"}}>
-            <h4>Balance :{v}   </h4> <span><MdDelete className="deleteIcon" onClick={()=>{deleteIcon(i)}}/></span>
+          <div
+            key={i}
+            className="second"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "1rem",
+            }}
+          >
+            <h4>Balance :{v} </h4>{" "}
+            <span>
+              <MdDelete
+                className="deleteIcon"
+                onClick={() => {
+                  deleteIcon(i);
+                }}
+              />
+            </span>
           </div>
         );
       })}
