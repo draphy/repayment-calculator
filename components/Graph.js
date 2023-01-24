@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 import {
   Chart as ChartJS,
@@ -26,7 +25,7 @@ ChartJS.register(
 );
 
 function Graph() {
-  const { balance, history } = useSelector((state) => state);
+  const { balance } = useSelector((state) => state);
   const [emivalue, setEmivalue] = useState(null);
   const [timerId, setTimerId] = useState(null);
   const options = {
@@ -86,7 +85,7 @@ function Graph() {
 
   // Declare debounce function
   function debounce(fn, delay) {
-    let timeout;
+    let timeout = timerId;
     return function () {
       clearTimeout(timeout);
       timeout = setTimeout(fn, delay);
@@ -119,7 +118,7 @@ function Graph() {
             />
           </div>
 
-          <ToastContainer />
+          {/* <ToastContainer /> */}
         </div>
       </div>
       <hr />

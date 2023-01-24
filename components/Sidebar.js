@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
+
 import { addBalance, deleteBalance } from "@/redux";
 
 import { MdDelete } from "react-icons/md";
@@ -42,7 +42,7 @@ function Sidebar() {
         <input type="number" readOnly value={balance}></input>
       </form>
 
-      <ToastContainer />
+      {/* <ToastContainer /> */}
 
       <form onSubmit={handleSubmit} style={{ marginTop: "1rem" }}>
         <input
